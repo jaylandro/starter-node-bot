@@ -9,6 +9,8 @@ Visit [Beep Boop](https://beepboophq.com/docs/article/overview) to get the scoop
 * You have already signed up with [Beep Boop](https://beepboophq.com) and have a local fork of this project.
 * You have sufficient rights in your Slack team to configure a bot and generate/access a Slack API token.
 
+Yay!
+
 ## Usage
 
 ### Run locally

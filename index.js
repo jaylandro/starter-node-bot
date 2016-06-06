@@ -38,6 +38,10 @@ controller.hears(['hello', 'hi'], 'direct_message', function (bot, message) {
   bot.reply(message, 'Hello, Thank\'s for the direct message :100:')
 })
 
+controller.hears('.*', ['direct_mention','mention'], function (bot, message) {
+  bot.reply(message, 'You really do care about me. :heart:')
+})
+
 
 controller.hears(['call me (.*)', 'my name is (.*)'], ['direct_message','direct_mention','mention'], function(bot, message) {
     var name = message.match[1];
@@ -121,12 +125,6 @@ controller.hears(['what is my name', 'who am i'], ['direct_message','direct_ment
         }
     });
 });
-
-
-
-controller.hears('.*', 'mention', function (bot, message) {
-  bot.reply(message, 'You really do care about me. :heart:')
-})
 
 controller.hears('help', ['direct_message', 'direct_mention'], function (bot, message) {
   var help = 'I will respond to the following messages: \n' +

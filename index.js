@@ -2,6 +2,14 @@ var Botkit = require('botkit')
 
 var token = process.env.SLACK_TOKEN
 
+var SlackClient = require("slack-client");
+var slackClient = new Slack(token, true, true);
+// login dance 
+slackClient._send({id: 1,
+  type: "typing",
+  channel: "trustculture"
+});
+
 var controller = Botkit.slackbot({
   // reconnect to Slack RTM when connection goes bad
   retry: Infinity,
@@ -36,6 +44,10 @@ controller.hears(['hello', 'hi'], 'direct_mention', function (bot, message) {
 
 controller.hears('typeit', ['direct_mention', 'direct_message'], function (bot, message) {
   bot.reply(user_typing)
+  bot.send({id: 1,
+    type: "typing",
+    channel: "trustculture"
+  })
 })
 
 controller.hears(['hello', 'hi'], 'direct_message', function (bot, message) {

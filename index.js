@@ -2,13 +2,13 @@ var Botkit = require('botkit')
 
 var token = process.env.SLACK_TOKEN
 
-var Slack = require("@slack/client");
+/*var Slack = require("@slack/client");
 var slackClient = new Slack(token, true, true);
 // login dance 
 slackClient._send({id: 1,
   type: "typing",
   channel: "trustculture"
-});
+});*/
 
 var controller = Botkit.slackbot({
   // reconnect to Slack RTM when connection goes bad

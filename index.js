@@ -2,7 +2,7 @@ var Botkit = require('botkit')
 
 var token = process.env.SLACK_TOKEN
 
-var SlackClient = require("slack-client");
+var SlackClient = require("@slack/client");
 var slackClient = new Slack(token, true, true);
 // login dance 
 slackClient._send({id: 1,

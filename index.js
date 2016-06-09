@@ -47,6 +47,7 @@ controller.hears(['session1', 'session 1', 'first session'], ['direct_mention', 
     bot.reply(message, 'Sure, here is the session 1 info... :smile:')
     /*bot.reply(message, session1)*/
     var sessioninfo = {  
+       "response_type": "ephemeral",
        "text":"*9:15 - Session 1*",
        "attachments":[  
           {  
@@ -56,19 +57,24 @@ controller.hears(['session1', 'session 1', 'first session'], ['direct_mention', 
           },
           {  
              "text":"P0808: The Science Behind Sexism: How Unconscious Bias Hinders Diversity in Tech ",
-             "author_name":"Sarah Olson - Director - Women Who Code "
+             "author_name":"Sarah Olson - Director - Women Who Code ",
+             "color": "#7CD197"
           },
           {  
              "text":"P0838: VSTS and Azure - Cloud DevOps 101",
-             "author_name":"Mike Benkovich - VP Consulting - Improving Enterprises LLC"
+             "author_name":"Mike Benkovich - VP Consulting - Improving Enterprises LLC",
+             "color": "#7CD197"
           },
           {  
              "text":"P1808: Beyond the Operating System: Red Hat’s Open Strategy for the Modern Enterprise",
-             "author_name":"James Falkner - Technology Evangelist - Red Hat "
+             "author_name":"James Falkner - Technology Evangelist - Red Hat ",
+             "color": "#7CD197"
           },
           {  
              "text":"P1838: Node.js with Express – The Future of Web Development?",
-             "author_name":"Damodar Chetty - President - Software Engineering Solutions, Inc. "
+             "author_name":"Damodar Chetty - President - Software Engineering Solutions, Inc. ",
+             "color": "#7CD197"
+
           }
        ]
     }

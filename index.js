@@ -34,6 +34,12 @@ controller.hears(['hello', 'hi'], 'direct_mention', function (bot, message) {
   bot.reply(message, 'Hello.')
 })
 
+controller.hears(['hmu', 'heyo'], 'direct_mention', function (bot, message) {
+  bot.reply(message, 'Its a multi message')
+  bot.reply(message, 'Party')
+  bot.reply(message, 'Yes it is')
+})
+
 controller.hears('typeit', ['direct_mention', 'direct_message'], function (bot, message) {
   bot.reply(user_typing)
   bot.send({id: 1,

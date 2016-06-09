@@ -241,7 +241,7 @@ controller.hears(['attachment'], ['direct_message', 'direct_mention', 'mention']
 })
 
 controller.hears('.*', ['direct_message', 'direct_mention'], function (bot, message) {
-  bot.reply(message, 'Sorry < @' + message.user + ' >, I don\'t understand. \n')
+  bot.reply(message, 'Sorry <@' + message.user + '>, I don\'t understand. \n')
 })
 
 controller.hears(['what is my name', 'who am i'], ['direct_message','direct_mention','mention'], function(bot, message) {

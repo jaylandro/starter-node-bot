@@ -30,14 +30,8 @@ controller.on('bot_channel_join', function (bot, message) {
   bot.reply(message, "I'm here!")
 })
 
-controller.hears(['hello', 'hi'], 'direct_mention', function (bot, message) {
-  bot.reply(message, 'Hello.')
-})
-
-controller.hears(['hmu', 'heyo'], 'direct_mention', function (bot, message) {
-  bot.reply(message, 'Its a multi message')
-  bot.reply(message, 'Party')
-  bot.reply(message, 'Yes it is')
+controller.hears('(.*)', 'direct_mention', function (bot, message) {
+  bot.reply(message, 'Hi <@' + message.user + '>, You have unlocked osnbot! Find out more about the sessions by typing `session #`. Thanks for coming! :snowflake:')
 })
 
 controller.hears(['session (.*)'], ['direct_mention', 'direct_message'], function(bot, message){
@@ -177,12 +171,14 @@ controller.hears(['session (.*)'], ['direct_mention', 'direct_message'], functio
                  }
               ]
         }
-      } else {
-        var sessioninfo = "Please enter a number after using the keyword session to find a schedule"
-      }
+      } 
 
-      bot.reply(message, 'Get ready for Session ' + sessionNumber + '! :mega:')
-      bot.reply(message, sessioninfo)
+      if (sessionNumber > 0){
+        bot.reply(message, 'Get ready for Session ' + sessionNumber + '! :mega: \n Full schedule available <https://opensourcenorth.slack.com/files/jlandro/F1F6D5CCT/Open_Source_North_Schedule|Right Here>')
+        bot.reply(message, sessioninfo)
+      } else {
+        bot.reply(message, 'Please enter a number after using the keyword ` session ` to find a schedule')
+      }
       console.log(sessioninfo)
   } catch (e) {
       console.log(e);
@@ -191,7 +187,7 @@ controller.hears(['session (.*)'], ['direct_mention', 'direct_message'], functio
 })
 
 controller.hears(['hello', 'hi'], 'direct_message', function (bot, message) {
-  bot.reply(message, 'Hello, Thank you for saying hi! Keepin it :100:')
+  bot.reply(message, 'Hello and welcome to Open Source North, we')
 })
 
 controller.hears('.*', ['direct_mention','mention'], function (bot, message) {
@@ -244,7 +240,7 @@ controller.hears(['attachment'], ['direct_message', 'direct_mention', 'mention']
 })
 
 controller.hears('.*', ['direct_message', 'direct_mention'], function (bot, message) {
-  bot.reply(message, 'Sorry <@' + message.user + '>, I don\'t understand. \n')
+  bot.reply(message, 'Sorry < @' + message.user + ' >, I don\'t understand. \n')
 })
 
 controller.hears(['what is my name', 'who am i'], ['direct_message','direct_mention','mention'], function(bot, message) {
@@ -301,8 +297,6 @@ controller.hears(['what is my name', 'who am i'], ['direct_message','direct_ment
                                     bot.reply(message, 'Got it. I will call you ' + user.name + ' from now on.');
                                 });
                             });
-
-
 
                         } else {
                             // this happens if the conversation ended prematurely for some reason

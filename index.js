@@ -175,7 +175,7 @@ controller.hears(['session (.*)'], ['direct_mention', 'direct_message'], functio
 
       if (sessionNumber > 0){
         bot.reply(message, 'Get ready for Session ' + sessionNumber + '! :mega:')
-        bot.reply(message, 'Full schedule available https://opensourcenorth.slack.com/files/jlandro/F1F6D5CCT/Open_Source_North_Schedule')
+        bot.reply(message, 'Full schedule available here: https://goo.gl/AvTz5T')
         bot.reply(message, sessioninfo)
       } else {
         bot.reply(message, 'Please enter a number after using the keyword ` session ` to find a schedule')

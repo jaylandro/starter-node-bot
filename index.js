@@ -189,12 +189,20 @@ controller.hears(['hello', 'hi'], ['direct_message','direct_mention','mention'],
   bot.reply(message, 'Hello and welcome to Open Source North, we\'re glad you\'re here!')
 })
 
+controller.hears(['when is happy hour', 'happy hour'], ['direct_message','direct_mention','mention'], function (bot, message) {
+  bot.reply(message, ':glitch_crab: *Happy Hour is at 4:30! It\'s not late, no, no, it\'s early* :beers:')
+})
+
 controller.hears('.*', ['direct_mention','mention'], function (bot, message) {
   bot.reply(message, 'You really do care about me. :heart:')
 })
 
 controller.hears('osnbot rules', 'ambient', function (bot, message) {
   bot.reply(message, 'Why yes, yes i do! :squirrel:')
+})
+
+controller.hears('happy hour', 'ambient', function (bot, message) {
+  bot.reply(message, ':glitch_crab: *Happy Hour is at 4:30! It\'s not late, no, no, it\'s early* :beers:')
 })
 
 
@@ -215,10 +223,15 @@ controller.hears(['call me (.*)', 'my name is (.*)'], ['direct_message','direct_
 
 controller.hears(['help', 'info'], ['direct_message', 'direct_mention'], function (bot, message) {
   var help = 'I will respond to the following messages: \n' +
-      '`@osnbot. session #` List the speakers broken down by section.\n' +
+      '`@osnbot. session 5` List the speakers broken down by section.\n' +
+      '`osnbot rules` Boost the little bots ego.\n' +
+      '`@osnbot.: when is happy hour?` Find out when happy hour is, uh huh.\n' +
+      'Direct message @osnbot. `call me something` Teach the bot what you want to be called.\n' +
+      '`@osnbot.: unlock` Teach the bot what oyu want to be called.\n' +
       '`bot hi` for a simple message.\n' +
       '`bot attachment` to see a Slack attachment message.\n' +
-      '`@<your bot\'s name>` to demonstrate detecting a mention.\n' +
+      '`@osnbot.` to demonstrate detecting a mention.\n' +
+      '`@osnbot. unlock` to unlock hidden powers.\n' +
       '`bot help` to see this again.'
   bot.reply(message, help)
 })

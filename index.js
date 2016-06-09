@@ -45,7 +45,7 @@ controller.hears(['session1', 'session 1', 'first session'], ['direct_mention', 
   var session1 = fs.readFileSync("session1.json");
   bot.reply(message, 'Thank you for asking here comes Session 1')
   bot.reply(message, session1)
-  cosnole.log(session1)
+  console.log(session1)
 })
 
 controller.hears(['hello', 'hi'], 'direct_message', function (bot, message) {

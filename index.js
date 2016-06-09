@@ -21,7 +21,6 @@ if (token) {
 
     console.log('Connected to Slack RTM')
   })
-// Otherwise assume multi-team mode - setup beep boop resourcer connection
 } else {
   console.log('Starting in Beep Boop multi-team mode')
   require('beepboop-botkit').start(controller, { debug: true })
@@ -124,9 +123,62 @@ controller.hears(['session (.*)'], ['direct_mention', 'direct_message'], functio
               }
            ]
         }
-      }
+      } else if (sessionNumber == 4) {
+        var sessioninfo = {  
+           "response_type": "ephemeral",
+           "text":"*1:55 - Session 4*",
+           "attachments":[  
+              {  
+                 "text":"P0806: Conscious Coupling for Anti-Fragile Engineers ",
+                 "author_name":"David Laribee - Founder - Nerd/Noir "
+              },
+              {  
+                 "text":"P0808: Demystifying the Flux Pattern for React ",
+                 "author_name":"Vince Bullinger - Software Architect - Independent Consultant "
+              },
+              {  
+                 "text":"P0838: The Highs and Lows of High and Low Fidelity Prototyping ",
+                 "author_name":"David McCrindle - Director - SmartThings "
+              },
+              {  
+                 "text":"P1808: DevOps 101 ",
+                 "author_name":"Donnie Berkholz, Ph.D. - Research Director - 451 Research "
+              },
+              {  
+                 "text":"P1838: Microservice Platform on Mesos ",
+                 "author_name":"Manish Rajkarnikar - Senior Engineer - Target "
+              }
+           ]
+        }
+      } else if (sessionNumber == 5) {
+        var sessioninfo = {  
+              "response_type": "ephemeral",
+              "text":"*3:15 Session 5*",
+              "attachments":[  
+                 {  
+                    "text":"P0806: The CAP Theorem of Architects   ",
+                    "author_name":"Joel Crabb - VP, Architecture - Target "
+                 },
+                 {  
+                    "text":"P0808: Real-Time IoT with Containers and gRPC   ",
+                    "author_name":"Mark Mandel - Developer Advocate - Google "
+                 },
+                 {  
+                    "text":"P0838: Date and Time Odds, Ends and Oddities   ",
+                    "author_name":"Maggie Pint - Web Development Manager - Tempworks Staffing Software "
+                 },
+                 {  
+                    "text":"P1808: More Practical React with mobx  ",
+                    "author_name":"Matt Ruby - Enterprise Software Developer - Room &amp; Board "
+                 },
+                 {  
+                    "text":"P1838: MongoDB Is Cool, but When Should I Use It? ",
+                    "author_name":"Matt Kalan - Senior Solution and Enterprise Architect - MongoDB "
+                 }
+              ]
+           }
 
-      bot.reply(message, 'Sure, here is the Session ' + sessionNumber + ' info... :mega:')
+      bot.reply(message, 'Get ready for Session ' + sessionNumber + '! :mega:')
       bot.reply(message, sessioninfo)
       console.log(sessioninfo)
   } catch (e) {
@@ -136,7 +188,7 @@ controller.hears(['session (.*)'], ['direct_mention', 'direct_message'], functio
 })
 
 controller.hears(['hello', 'hi'], 'direct_message', function (bot, message) {
-  bot.reply(message, 'Hello, Thank you for saying hi! You are :100:')
+  bot.reply(message, 'Hello, Thank you for saying hi! Keepin it :100:')
 })
 
 controller.hears('.*', ['direct_mention','mention'], function (bot, message) {
@@ -161,6 +213,7 @@ controller.hears(['call me (.*)', 'my name is (.*)'], ['direct_message','direct_
 
 controller.hears(['help', 'info'], ['direct_message', 'direct_mention'], function (bot, message) {
   var help = 'I will respond to the following messages: \n' +
+      '`@osnbot. session #` List the speakers broken down by section.\n' +
       '`bot hi` for a simple message.\n' +
       '`bot attachment` to see a Slack attachment message.\n' +
       '`@<your bot\'s name>` to demonstrate detecting a mention.\n' +

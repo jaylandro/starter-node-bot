@@ -176,7 +176,10 @@ controller.hears(['session (.*)'], ['direct_mention', 'direct_message'], functio
                     "author_name":"Matt Kalan - Senior Solution and Enterprise Architect - MongoDB "
                  }
               ]
-           }
+        }
+      } else {
+        var sessioninfo = "Please enter a number after using the keyword session to find a schedule"
+      }
 
       bot.reply(message, 'Get ready for Session ' + sessionNumber + '! :mega:')
       bot.reply(message, sessioninfo)

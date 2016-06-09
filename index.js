@@ -43,11 +43,12 @@ controller.hears(['hmu', 'heyo'], 'direct_mention', function (bot, message) {
 
 controller.hears(['session1', 'session 1', 'first session'], ['direct_mention', 'direct_message'], function(bot, message){
   var session1 = fs.readFileSync("session1.json");
+  bot.reply(message, 'Thank you for asking here comes Session 1')
   bot.reply(message, session1)
 })
 
 controller.hears(['hello', 'hi'], 'direct_message', function (bot, message) {
-  bot.reply(message, 'Hello, Thank\'s for the direct message :100:')
+  bot.reply(message, 'Hello, Thank you for saying hi! You are :100:')
 })
 
 controller.hears('.*', ['direct_mention','mention'], function (bot, message) {

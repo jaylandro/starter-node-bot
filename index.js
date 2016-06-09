@@ -30,7 +30,7 @@ controller.on('bot_channel_join', function (bot, message) {
   bot.reply(message, "I'm here!")
 })
 
-controller.hears('(.*)', 'direct_mention', function (bot, message) {
+controller.hears(['unlock'], 'direct_mention', function (bot, message) {
   bot.reply(message, 'Hi <@' + message.user + '>, You have unlocked osnbot! Find out more about the sessions by typing `session #`. Thanks for coming! :snowflake:')
 })
 
@@ -174,7 +174,7 @@ controller.hears(['session (.*)'], ['direct_mention', 'direct_message'], functio
       } 
 
       if (sessionNumber > 0){
-        bot.reply(message, 'Get ready for Session ' + sessionNumber + '! :mega: \n Full schedule available <https://opensourcenorth.slack.com/files/jlandro/F1F6D5CCT/Open_Source_North_Schedule|Right Here>')
+        bot.reply(message, 'Get ready for Session ' + sessionNumber + '! :mega: \n Full schedule available https://opensourcenorth.slack.com/files/jlandro/F1F6D5CCT/Open_Source_North_Schedule')
         bot.reply(message, sessioninfo)
       } else {
         bot.reply(message, 'Please enter a number after using the keyword ` session ` to find a schedule')

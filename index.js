@@ -77,7 +77,7 @@ controller.hears(['session (.*)'], ['direct_mention', 'direct_message'], functio
             }
          ]
         }
-      } else if(sessionNumber == 2) {
+    } else if(sessionNumber == 2) {
         var sessioninfo = {  
            "response_type": "ephemeral",
            "text":"*10:35 - Session 2*",
@@ -109,7 +109,6 @@ controller.hears(['session (.*)'], ['direct_mention', 'direct_message'], functio
               }
            ]
         }
-      }
     }
 
     bot.reply(message, 'Sure, here is the Session ' + sessionNumber + ' info... :mega:')

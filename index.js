@@ -195,6 +195,10 @@ controller.hears('.*', ['direct_mention','mention'], function (bot, message) {
   bot.reply(message, 'You really do care about me. :heart:')
 })
 
+controller.hears('osnbot rules', '.*', function (bot, message) {
+  bot.reply(message, 'Why yes, yes i do! :squirrel:')
+})
+
 
 controller.hears(['call me (.*)', 'my name is (.*)'], ['direct_message','direct_mention','mention'], function(bot, message) {
     var name = message.match[1];

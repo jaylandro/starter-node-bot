@@ -42,10 +42,15 @@ controller.hears(['hmu', 'heyo'], 'direct_mention', function (bot, message) {
 })
 
 controller.hears(['session1', 'session 1', 'first session'], ['direct_mention', 'direct_message'], function(bot, message){
-  var session1 = fs.readFileSync("session1.json");
-  bot.reply(message, 'Thank you for asking here comes Session 1')
-  bot.reply(message, session1)
-  console.log(session1)
+  try {
+    var session1 = fs.readFileSync('session1.json', 'utf8');
+    bot.reply(message, 'Thank you for asking here comes Session 1')
+    bot.reply(message, session1)
+    console.log(session1)
+  }
+  catch (e) {
+    console.log(e);
+  }
 })
 
 controller.hears(['hello', 'hi'], 'direct_message', function (bot, message) {

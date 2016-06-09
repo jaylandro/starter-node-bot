@@ -45,79 +45,94 @@ controller.hears(['session (.*)'], ['direct_mention', 'direct_message'], functio
   var sessionNumber = message.match[1];
 
   try {
-    if(sessionNumber == 1){
-      var sessioninfo = {  
-         "response_type": "ephemeral",
-         "text":"*9:15 - Session 1*",
-         "attachments":[  
-            {  
-               "text":"P0806: Death to Cookies, Long Live JSON Web Tokens",
-               "author_name":"Kassandra Perch - Developer Evangelist - Auth0",
-               "color": "#7CD197"
-            },
-            {  
-               "text":"P0808: The Science Behind Sexism: How Unconscious Bias Hinders Diversity in Tech ",
-               "author_name":"Sarah Olson - Director - Women Who Code ",
-               "color": "#7CD197"
-            },
-            {  
-               "text":"P0838: VSTS and Azure - Cloud DevOps 101",
-               "author_name":"Mike Benkovich - VP Consulting - Improving Enterprises LLC",
-               "color": "#7CD197"
-            },
-            {  
-               "text":"P1808: Beyond the Operating System: Red Hat’s Open Strategy for the Modern Enterprise",
-               "author_name":"James Falkner - Technology Evangelist - Red Hat ",
-               "color": "#7CD197"
-            },
-            {  
-               "text":"P1838: Node.js with Express – The Future of Web Development?",
-               "author_name":"Damodar Chetty - President - Software Engineering Solutions, Inc. ",
-               "color": "#7CD197"
-            }
-         ]
-        }
-    } else if(sessionNumber == 2) {
-        var sessioninfo = {  
+      if (sessionNumber == 1) {
+          var sessioninfo = {
+              "response_type": "ephemeral",
+              "text": "*9:15 - Session 1*",
+              "attachments": [{
+                  "text": "P0806: Death to Cookies, Long Live JSON Web Tokens",
+                  "author_name": "Kassandra Perch - Developer Evangelist - Auth0",
+                  "color": "#7CD197"
+              }, {
+                  "text": "P0808: The Science Behind Sexism: How Unconscious Bias Hinders Diversity in Tech ",
+                  "author_name": "Sarah Olson - Director - Women Who Code ",
+                  "color": "#7CD197"
+              }, {
+                  "text": "P0838: VSTS and Azure - Cloud DevOps 101",
+                  "author_name": "Mike Benkovich - VP Consulting - Improving Enterprises LLC",
+                  "color": "#7CD197"
+              }, {
+                  "text": "P1808: Beyond the Operating System: Red Hat’s Open Strategy for the Modern Enterprise",
+                  "author_name": "James Falkner - Technology Evangelist - Red Hat ",
+                  "color": "#7CD197"
+              }, {
+                  "text": "P1838: Node.js with Express – The Future of Web Development?",
+                  "author_name": "Damodar Chetty - President - Software Engineering Solutions, Inc. ",
+                  "color": "#7CD197"
+              }]
+          }
+      } else if (sessionNumber == 2) {
+          var sessioninfo = {
+              "response_type": "ephemeral",
+              "text": "*10:35 - Session 2*",
+              "attachments": [{
+                  "text": "P0806: Building Powerful Enterprise Apps with Angular 2 and TypeScript ",
+                  "author_name": "David Giard - Technical Evangelist - Microsoft ",
+                  "color": "#BADA55"
+              }, {
+                  "text": "P0808: Building Cross-Platform Applications with Electron ",
+                  "author_name": "Aaron Ackerman - Senior Software Engineer - Code42 ",
+                  "color": "#BADA55"
+              }, {
+                  "text": "P0838: The New Mobile Web: Service Worker, Push and App Manifests ",
+                  "author_name": "Dan Callahan - Staff Software Engineer - Mozilla ",
+                  "color": "#BADA55"
+              }, {
+                  "text": "P1808: Node.js in Production ",
+                  "author_name": "Dan Menssen - Solutions Architect - Olson ",
+                  "color": "#BADA55"
+              }, {
+                  "text": "P1838: Full-Text Search with Apache Solr &amp; Hadoop ",
+                  "author_name": "Mac Noland - Solution Architect - phData Karl Lacher - Solution Architect - phData",
+                  "color": "#BADA55"
+              }]
+          }
+      } else if (sessionNumber == 3) {
+        var sessioninfo = {
            "response_type": "ephemeral",
-           "text":"*10:35 - Session 2*",
+           "text":"*12:35 - Session 3*",
            "attachments":[  
               {  
-                 "text":"P0806: Building Powerful Enterprise Apps with Angular 2 and TypeScript ",
-                 "author_name":"David Giard - Technical Evangelist - Microsoft ",
-                 "color": "#BADA55"
+                 "text":"P0806: Open Source at Microsoft and Beyond ",
+                 "author_name":"Jakub Jedryszek - Software Engineer - Microsoft "
               },
               {  
-                 "text":"P0808: Building Cross-Platform Applications with Electron ",
-                 "author_name":"Aaron Ackerman - Senior Software Engineer - Code42 ",
-                 "color": "#BADA55"
+                 "text":"P0808: A Flexbox Primer (for the Unprimed) ",
+                 "author_name":"Jeremy Wagner - Senior Application Developer - General Mills "
               },
               {  
-                 "text":"P0838: The New Mobile Web: Service Worker, Push and App Manifests ",
-                 "author_name":"Dan Callahan - Staff Software Engineer - Mozilla ",
-                 "color": "#BADA55"
+                 "text":"P0838: Building a Culture of Trust with Slack ",
+                 "author_name":"Andrew Gruhn - Consultant - Solution Design Group + James Landro - Consultant - Solution Design Group"
               },
               {  
-                 "text":"P1808: Node.js in Production ",
-                 "author_name":"Dan Menssen - Solutions Architect - Olson ",
-                 "color": "#BADA55"
+                 "text":"P1808: Managing Devices with SaltStack ",
+                 "author_name":"John Young - CIO - NimbeLink "
               },
               {  
-                 "text":"P1838: Full-Text Search with Apache Solr &amp; Hadoop ",
-                 "author_name":"Mac Noland - Solution Architect - phData Karl Lacher - Solution Architect - phData",
-                 "color": "#BADA55"
+                 "text":"P1838: Elastic Stack: Not Just for Logs ",
+                 "author_name":"Michael Heldebrant - Solutions Architect - Elastic "
               }
            ]
         }
-    }
+      }
 
-    bot.reply(message, 'Sure, here is the Session ' + sessionNumber + ' info... :mega:')
-    bot.reply(message, sessioninfo)
-    console.log(sessioninfo)
+      bot.reply(message, 'Sure, here is the Session ' + sessionNumber + ' info... :mega:')
+      bot.reply(message, sessioninfo)
+      console.log(sessioninfo)
+  } catch (e) {
+      console.log(e);
   }
-  catch (e) {
-    console.log(e);
-  }
+
 })
 
 controller.hears(['hello', 'hi'], 'direct_message', function (bot, message) {

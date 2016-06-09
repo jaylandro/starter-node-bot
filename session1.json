@@ -3,7 +3,8 @@
    "attachments":[  
       {  
          "text":"P0806: Death to Cookies, Long Live JSON Web Tokens",
-         "author_name":"Kassandra Perch - Developer Evangelist - Auth0"
+         "author_name":"Kassandra Perch - Developer Evangelist - Auth0",
+         "color": "#7CD197"
       },
       {  
          "text":"P0808: The Science Behind Sexism: How Unconscious Bias Hinders Diversity in Tech ",

@@ -44,8 +44,35 @@ controller.hears(['hmu', 'heyo'], 'direct_mention', function (bot, message) {
 controller.hears(['session1', 'session 1', 'first session'], ['direct_mention', 'direct_message'], function(bot, message){
   try {
     var session1 = fs.readFileSync('session1.json', 'utf8');
-    bot.reply(message, 'Thank you for asking here comes Session 1')
-    bot.reply(message, session1)
+    bot.reply(message, 'Sure, here is the session 1 info... :smile:')
+    /*bot.reply(message, session1)*/
+    var sessioninfo = {  
+       "text":"*9:15 - Session 1*",
+       "attachments":[  
+          {  
+             "text":"P0806: Death to Cookies, Long Live JSON Web Tokens",
+             "author_name":"Kassandra Perch - Developer Evangelist - Auth0",
+             "color": "#7CD197"
+          },
+          {  
+             "text":"P0808: The Science Behind Sexism: How Unconscious Bias Hinders Diversity in Tech ",
+             "author_name":"Sarah Olson - Director - Women Who Code "
+          },
+          {  
+             "text":"P0838: VSTS and Azure - Cloud DevOps 101",
+             "author_name":"Mike Benkovich - VP Consulting - Improving Enterprises LLC"
+          },
+          {  
+             "text":"P1808: Beyond the Operating System: Red Hat’s Open Strategy for the Modern Enterprise",
+             "author_name":"James Falkner - Technology Evangelist - Red Hat "
+          },
+          {  
+             "text":"P1838: Node.js with Express – The Future of Web Development?",
+             "author_name":"Damodar Chetty - President - Software Engineering Solutions, Inc. "
+          }
+       ]
+    }
+    bot.reply(message, sessioninfo)
     console.log(session1)
   }
   catch (e) {

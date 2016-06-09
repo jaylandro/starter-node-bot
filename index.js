@@ -188,7 +188,7 @@ controller.hears(['session (.*)'], ['direct_mention', 'direct_message'], functio
 })
 
 controller.hears(['hello', 'hi'], 'direct_message', function (bot, message) {
-  bot.reply(message, 'Hello and welcome to Open Source North, we\'re glad you\re here!')
+  bot.reply(message, 'Hello and welcome to Open Source North, we\'re glad you\'re here!')
 })
 
 controller.hears('.*', ['direct_mention','mention'], function (bot, message) {

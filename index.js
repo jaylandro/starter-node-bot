@@ -1,4 +1,5 @@
 var Botkit = require('botkit')
+var fs = require("fs");
 
 var token = process.env.SLACK_TOKEN
 
@@ -40,12 +41,9 @@ controller.hears(['hmu', 'heyo'], 'direct_mention', function (bot, message) {
   bot.reply(message, 'Yes it is')
 })
 
-controller.hears('typeit', ['direct_mention', 'direct_message'], function (bot, message) {
-  bot.reply(user_typing)
-  bot.send({id: 1,
-    type: "typing",
-    channel: "trustculture"
-  })
+controller.hears(['session1', 'session 1', 'first session'], ['direct_mention', 'direct_message'], function(bot, message){
+  var session1 = fs.readFileSync("session1.json");
+  bot.reply(message, session1)
 })
 
 controller.hears(['hello', 'hi'], 'direct_message', function (bot, message) {
@@ -71,6 +69,38 @@ controller.hears(['call me (.*)', 'my name is (.*)'], ['direct_message','direct_
         });
     });
 });
+
+controller.hears(['help', 'info'], ['direct_message', 'direct_mention'], function (bot, message) {
+  var help = 'I will respond to the following messages: \n' +
+      '`bot hi` for a simple message.\n' +
+      '`bot attachment` to see a Slack attachment message.\n' +
+      '`@<your bot\'s name>` to demonstrate detecting a mention.\n' +
+      '`bot help` to see this again.'
+  bot.reply(message, help)
+})
+
+controller.hears(['attachment'], ['direct_message', 'direct_mention', 'mention'], function (bot, message) {
+  var text = 'Beep Beep Boop is a ridiculously simple hosting platform for your Slackbots.'
+  var attachments = [{
+    fallback: text,
+    pretext: 'We bring bots to life. :sunglasses: :thumbsup:',
+    title: 'Host, deploy and share your bot in seconds.',
+    image_url: 'https://storage.googleapis.com/beepboophq/_assets/bot-1.22f6fb.png',
+    title_link: 'https://beepboophq.com/',
+    text: text,
+    color: '#7CD197'
+  }]
+
+  bot.reply(message, {
+    attachments: attachments
+  }, function (err, resp) {
+    console.log(err, resp)
+  })
+})
+
+controller.hears('.*', ['direct_message', 'direct_mention'], function (bot, message) {
+  bot.reply(message, 'Sorry <@' + message.user + '>, I don\'t understand. \n')
+})
 
 controller.hears(['what is my name', 'who am i'], ['direct_message','direct_mention','mention'], function(bot, message) {
 
@@ -139,35 +169,3 @@ controller.hears(['what is my name', 'who am i'], ['direct_message','direct_ment
         }
     });
 });
-
-controller.hears('help', ['direct_message', 'direct_mention'], function (bot, message) {
-  var help = 'I will respond to the following messages: \n' +
-      '`bot hi` for a simple message.\n' +
-      '`bot attachment` to see a Slack attachment message.\n' +
-      '`@<your bot\'s name>` to demonstrate detecting a mention.\n' +
-      '`bot help` to see this again.'
-  bot.reply(message, help)
-})
-
-controller.hears(['attachment'], ['direct_message', 'direct_mention'], function (bot, message) {
-  var text = 'Beep Beep Boop is a ridiculously simple hosting platform for your Slackbots.'
-  var attachments = [{
-    fallback: text,
-    pretext: 'We bring bots to life. :sunglasses: :thumbsup:',
-    title: 'Host, deploy and share your bot in seconds.',
-    image_url: 'https://storage.googleapis.com/beepboophq/_assets/bot-1.22f6fb.png',
-    title_link: 'https://beepboophq.com/',
-    text: text,
-    color: '#7CD197'
-  }]
-
-  bot.reply(message, {
-    attachments: attachments
-  }, function (err, resp) {
-    console.log(err, resp)
-  })
-})
-
-controller.hears('.*', ['direct_message', 'direct_mention'], function (bot, message) {
-  bot.reply(message, 'Sorry <@' + message.user + '>, I don\'t understand. \n')
-})

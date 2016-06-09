@@ -4,12 +4,10 @@ var fs = require("fs");
 var token = process.env.SLACK_TOKEN
 
 var controller = Botkit.slackbot({
-  // reconnect to Slack RTM when connection goes bad
   retry: Infinity,
   debug: false
 })
 
-// Assume single team mode if we have a SLACK_TOKEN
 if (token) {
   console.log('Starting in single-team mode')
   controller.spawn({
@@ -187,7 +185,7 @@ controller.hears(['session (.*)'], ['direct_mention', 'direct_message'], functio
 
 })
 
-controller.hears(['hello', 'hi'], 'direct_message', function (bot, message) {
+controller.hears(['hello', 'hi'], ['direct_message','direct_mention','mention'], function (bot, message) {
   bot.reply(message, 'Hello and welcome to Open Source North, we\'re glad you\'re here!')
 })
 
@@ -244,9 +242,9 @@ controller.hears(['attachment'], ['direct_message', 'direct_mention', 'mention']
   })
 })
 
-controller.hears('.*', ['direct_message', 'direct_mention'], function (bot, message) {
+/*controller.hears('.*', ['direct_message', 'direct_mention'], function (bot, message) {
   bot.reply(message, 'Sorry <@' + message.user + '>, I don\'t understand. \n')
-})
+})*/
 
 controller.hears(['what is my name', 'who am i'], ['direct_message','direct_mention','mention'], function(bot, message) {
 
